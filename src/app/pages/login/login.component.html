@@ -1,0 +1,28 @@
+<div style="background-image: url(../../../assets/image/backgroud.jpg);width:100vw;height:100vh;">
+  <div class="div-form">
+    <div class="div-backgroud">
+      <h2 style="font-weight: bold;color:rgb(35, 142, 222);">登&nbsp;&nbsp;陆&nbsp;&nbsp;聚&nbsp;&nbsp;友</h2>
+      <form nz-form [formGroup]="validateForm">
+        <nz-form-item>
+          <nz-form-control nzErrorTip="请输入用户名！">
+            <nz-input-group nzPrefixIcon="user">
+              <input type="text" nz-input formControlName="loginName" placeholder="用户名" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="请输入用户密码">
+            <nz-input-group nzPrefixIcon="lock">
+              <input type="password" nz-input formControlName="password" placeholder="密码" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control>
+            <button nz-button class="login-form-button" [nzType]="'primary'" (click)="loginIn()">登 陆</button>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+    </div>
+  </div>
+</div>

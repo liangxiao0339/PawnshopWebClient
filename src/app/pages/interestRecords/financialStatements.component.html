@@ -1,0 +1,49 @@
+
+<div>
+    <nz-range-picker [(ngModel)]="queryDateRange"></nz-range-picker>
+    <button nz-button nzType="primary" (click)="queryAll()">
+        <i nz-icon nzType="filter"></i>查询
+    </button>
+</div>
+<nz-divider nzText="汇总报表"></nz-divider>
+<nz-table #tbFinancial nzBordered [nzData]="lstPawnGoods">
+    <thead>
+        <tr>
+            <th>抵押日期</th>
+            <th>物品名称</th>
+            <th>支出金额</th>
+            <th>利息金额</th>
+            <th>打水次数</th>
+            <th>售出价格</th>
+            <th>总计收入</th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-template ngFor let-itemPawnGoods [ngForOf]="tbFinancial.data">
+            <tr>
+                <td>{{ itemPawnGoods.pawnDate | date:'yyyy-MM-dd' }}</td>
+                <td>{{ itemPawnGoods.goodsName }}</td>
+                <td>{{ itemPawnGoods.goodsPrice }}</td>
+                <td>{{ itemPawnGoods.interestAmount }}</td>
+                <td>{{ itemPawnGoods.interestCount }}</td>
+                <td>{{ itemPawnGoods.salePrice }}</td>
+                <td>{{ itemPawnGoods.totalProfit }}</td>
+            </tr>
+        </ng-template>
+    </tbody>
+</nz-table>
+<nz-divider nzText="汇总记录"></nz-divider>
+<div style="background: #ECECEC;padding: 30px;font-weight: bold; font-size: 24px;">
+    <nz-row [nzGutter]="16">
+        <nz-col [nzSpan]="12">
+            <nz-card>
+                <nz-statistic [nzTitle]="'总余额'" [nzValue]="100000 | number" [nzValueStyle]="{ size:24 }"></nz-statistic>
+            </nz-card>
+        </nz-col>
+        <nz-col [nzSpan]="12">
+            <nz-card>
+                <nz-statistic [nzTitle]="'总利润'" [nzValue]="totalProfit | number"></nz-statistic>
+            </nz-card>
+        </nz-col>
+    </nz-row>
+</div>

@@ -1,0 +1,59 @@
+.ant-table-row td a{
+    margin-left:10px;
+}
+
+.ant-table-row th {
+    text-align: center;
+}
+
+.ant-table-row th:last-child {
+    text-align: left;
+}
+
+.ant-table-row td {
+    text-align: center;
+}
+
+.ant-table-row td:last-child {
+    text-align: left;
+}
+
+.ant-table-row td:last-child a {
+    margin-left: 10px;
+}
+
+.ant-btn {
+    margin-right: 10px;
+}
+
+.ant-list-item h2 {
+    width: 30%;
+}
+
+.ant-list-item h3 {
+    width: 30%;
+}
+
+.ant-list-item a {
+    font-size: 16px;
+}
+
+.list-item-textLeft {
+    text-align: left;
+    font-size: 16px;
+}
+
+.list-item-autoBreak {
+    height: auto;
+    word-wrap:break-word;
+    word-break:break-all;
+    overflow: hidden; 
+}
+
+.table-td-autoBreak {
+    height: auto;
+    word-wrap:break-word;
+    word-break:break-all;
+    overflow: hidden; 
+    max-width: 150px;
+}

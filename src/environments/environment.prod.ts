@@ -1,3 +1,6 @@
 export const environment = {
-  production: true
+  production: true,
+  tokenKey: 'token',
+  defaultChildRouter: '/pawnGoods',
+  loginRouter: '/login'
 };

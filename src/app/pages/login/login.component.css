@@ -1,0 +1,29 @@
+
+      .login-form {
+        width: 300px;
+        padding: 20px;
+      }
+
+      .login-form-forgot {
+        float: right;
+      }
+
+      .login-form-button {
+        width: 100%;
+      }
+
+      .div-form{
+        padding-left: 45vw; 
+        padding-top: 30vh;
+      }
+
+      .div-backgroud{
+        padding: 50px;
+        background-color: rgba(239,239,239, 0.7); 
+        width:400px;
+        border-radius:20px;
+        text-align: center;
+      }
+
+
+    
