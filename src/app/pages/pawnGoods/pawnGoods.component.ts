@@ -117,18 +117,8 @@ export class PawnGoodsComponent implements OnInit {
 
   loadPawnGoodsData(isResetPageIndex: boolean = false) {
     this.isLoadingPawnGoods = true;
-    const filterQueryModel = {};
 
-    const propertyNames = Object.getOwnPropertyNames(this.queryModel);
-
-    for (const itemPropertyName of propertyNames) {
-      if (this.queryModel[itemPropertyName] !== null && this.queryModel[itemPropertyName] !== ''
-        && this.queryModel[itemPropertyName] !== undefined) {
-        filterQueryModel[itemPropertyName] = this.queryModel[itemPropertyName];
-      }
-    }
-
-    this.pawnGoodsService.getPawnGoods(filterQueryModel)
+    this.pawnGoodsService.getPawnGoods(this.queryModel)
       .pipe(finalize(() => {
         this.isLoadingPawnGoods = false;
       }))
