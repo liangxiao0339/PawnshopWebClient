@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, CanActivateChild, Router } from '@angular/router';
 import { LoginService } from '../service/login.service';
 import { environment } from 'src/environments/environment';
+import { CustomSettingsService } from '../service/custom-settings.service';
 
 @Injectable()
 export class AuthGurad implements CanActivate, CanActivateChild {
-    constructor(private router: Router, private login: LoginService) { }
+    constructor(private router: Router, private login: LoginService, private customSettings: CustomSettingsService ) { }
 
     canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         return this.isLogin();
@@ -16,10 +17,10 @@ export class AuthGurad implements CanActivate, CanActivateChild {
     }
 
     isLogin() {
-        const loginUser = sessionStorage.getItem(environment.tokenKey);
+        const loginUser = sessionStorage.getItem(this.customSettings.tokenKey);
 
         if (loginUser === null || loginUser === undefined) {
-            this.router.navigateByUrl(environment.loginRoute);
+            this.router.navigateByUrl(this.customSettings.loginRoute);
             this.login.isLoginIn = false;
         } else {
             this.login.isLoginIn = true;

@@ -20,12 +20,7 @@
             <nz-option nzValue="1" nzLabel="死当"></nz-option>
         </nz-select>
 
-        <!-- <nz-select style="width: 120px;margin-left: 10px;" [nzAllowClear]="true" [nzPlaceHolder]="'当前状态'">
-            <nz-option nzValue="0" nzLabel="未出售"></nz-option>
-            <nz-option nzValue="1" nzLabel="已出售"></nz-option>
-            <nz-option nzValue="1" nzLabel="未结清"></nz-option>
-            <nz-option nzValue="1" nzLabel="已结清"></nz-option>
-        </nz-select> -->
+        <label nz-checkbox [(ngModel)]="queryModel.isNotSettledAndNotSaled" style="margin-left: 20px;">只看未结清未出售</label>
 
         <button nz-button nzType="primary" (click)="queryAll()" style="margin-left: 10px;">
             <i nz-icon nzType="filter"></i>查询

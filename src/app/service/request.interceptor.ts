@@ -9,13 +9,14 @@ import { catchError } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { CustomSettingsService } from './custom-settings.service';
 
 @Injectable()
 export class RequestInterceptor implements HttpInterceptor {
-    constructor(private router: Router) { }
+    constructor(private router: Router, private customSettings: CustomSettingsService) { }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        const token = sessionStorage.getItem(environment.tokenKey);
+        const token = sessionStorage.getItem(this.customSettings.tokenKey);
         request = request.clone({ headers: request.headers.set('Authorization', `Bearer ${token}`) });
 
         const requestParamKeys = request.params.keys();
@@ -31,8 +32,8 @@ export class RequestInterceptor implements HttpInterceptor {
         return next.handle(request).pipe(
             catchError(error => {
                 if (error.status === 401) {
-                    sessionStorage.removeItem(environment.tokenKey);
-                    this.router.navigateByUrl(environment.loginRoute);
+                    sessionStorage.removeItem(this.customSettings.tokenKey);
+                    this.router.navigateByUrl(this.customSettings.loginRoute);
                 }
 
                 return throwError(error);

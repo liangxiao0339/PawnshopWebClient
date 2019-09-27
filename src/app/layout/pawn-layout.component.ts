@@ -5,4 +5,5 @@ import { Component } from '@angular/core';
     styleUrls: ['./pawn-layout.component.css']
 })
 export class PawnLayoutComponent {
+    isCollapsed = false;
 }

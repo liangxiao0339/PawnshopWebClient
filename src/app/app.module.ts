@@ -17,6 +17,7 @@ import { LoginService } from './service/login.service';
 import { RequestInterceptor } from './service/request.interceptor';
 import { RouterModule } from '@angular/router';
 import { AuthGurad } from './auth/auth.gurad';
+import { CustomSettingsService } from './service/custom-settings.service';
 
 registerLocaleData(zh);
 
@@ -37,7 +38,7 @@ registerLocaleData(zh);
     ReactiveFormsModule,
     PawnModule
   ],
-  providers: [LoginService, { provide: NZ_I18N, useValue: zh_CN }, AuthGurad, RequestInterceptor
+  providers: [LoginService, CustomSettingsService, { provide: NZ_I18N, useValue: zh_CN }, AuthGurad, RequestInterceptor
   , { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })

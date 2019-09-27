@@ -43,7 +43,7 @@ export class PawnGoodsComponent implements OnInit {
     pawnStartDate: '',
     pawnEndDate: '',
     mortgageType: null,
-    // state: null
+    isNotSettledAndNotSaled: true
   };
 
   pawnGoodsFormGroup: FormGroup = new FormGroup({});
