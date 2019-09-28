@@ -22,8 +22,17 @@
     margin-left: 10px;
 }
 
+.ant-row {
+    margin-top: 10px;
+    line-height: 32px;
+}
+
 .ant-btn {
     margin-right: 10px;
+}
+
+.ant-select {
+    min-width: 150px;
 }
 
 .ant-list-item h2 {
@@ -56,4 +65,8 @@
     word-break:break-all;
     overflow: hidden; 
     max-width: 150px;
+}
+
+.ant-checkbox-wrapper{
+    vertical-align: middle;
 }

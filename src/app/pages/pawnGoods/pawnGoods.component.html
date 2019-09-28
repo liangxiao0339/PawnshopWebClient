@@ -1,34 +1,37 @@
 <div nz-row>
-    <nz-col nzSpan="20">
+    <nz-col nzSpan="22">
         <button nz-button nzType="primary" (click)="showModal()"><i nz-icon nzType="plus"></i>新增抵押</button>
         <button nz-button nzType="primary" (click)="queryCurrentMonth()"><i nz-icon nzType="filter"></i>只看当月</button>
     </nz-col>
-    <nz-col nzSpan="4" style="margin-top: 15px;">
+    <nz-col nzSpan="2">
         <nz-badge [nzCount]="rencentInterestRecordCount">
             <button nz-button nzType="primary" (click)="isShowInterestRecord = true">查看打水记录</button>
         </nz-badge>
     </nz-col>
 </div>
-<div>
-    <nz-col nzSpan="24">
+<div nz-row>
+    <nz-col nzSpan="7">
         <label>抵押日期： </label>
         <nz-range-picker [(ngModel)]="queryDateRange"></nz-range-picker>
-
-        <label style="margin-left: 20px;">抵押类型： </label>
-        <nz-select style="width: 120px;" [(ngModel)]="queryModel.mortgageType" [nzAllowClear]="true" [nzPlaceHolder]="'抵押类型'">
+    </nz-col>
+    <nz-col nzSpan="3">
+        <!-- <label>抵押类型： </label> -->
+        <nz-select [(ngModel)]="queryModel.mortgageType" width="150" [nzAllowClear]="true" [nzPlaceHolder]="'抵押类型'">
             <nz-option nzValue="0" nzLabel="活当"></nz-option>
             <nz-option nzValue="1" nzLabel="死当"></nz-option>
         </nz-select>
-
-        <label nz-checkbox [(ngModel)]="queryModel.isNotSettledAndNotSaled" style="margin-left: 20px;">只看未结清未出售</label>
-
-        <button nz-button nzType="primary" (click)="queryAll()" style="margin-left: 10px;">
+    </nz-col>
+    <nz-col nzSpan="3">
+        <label nz-checkbox [(ngModel)]="queryModel.isNotSettledAndNotSaled">只看未结清未出售</label>
+    </nz-col>
+    <nz-col nzSpan="4">
+        <button nz-button nzType="primary" (click)="queryAll()">
             <i nz-icon nzType="filter"></i>查询
         </button>
     </nz-col>
 </div>
 
-<nz-divider nzText="聚友寄卖交易记录"></nz-divider>
+<nz-divider nzText="数据列表"></nz-divider>
 
 <nz-table #tbPawnGoods [nzData]="lstPawnGoods" nzBordered [nzLoading]="isLoadingPawnGoods"
     [(nzPageIndex)]="queryModel.pageIndex" [(nzPageSize)]="queryModel.pageSize" [(nzTotal)]="queryModel.totalCount"
@@ -167,14 +170,14 @@
         <nz-form-item>
             <nz-form-label [nzRequired]="true" [nzSpan]="4">抵押方式</nz-form-label>
             <nz-form-control [nzSpan]="14" nzErrorTip="请选择抵押方式">
-                <nz-radio-group formControlName="mortgageType" (ngModelChange)="goodsMortgageTypeChange($event)"
+                <nz-radio-group #rdoMortgageType formControlName="mortgageType" (ngModelChange)="goodsMortgageTypeChange($event)"
                     [nzButtonStyle]="'solid'">
                     <label nz-radio-button nzValue="0">活当</label>
                     <label nz-radio-button nzValue="1">死当</label>
                 </nz-radio-group>
             </nz-form-control>
         </nz-form-item>
-        <nz-form-item *ngIf="pawnGoodsFormGroup.controls['mortgageType'].value == 0">
+        <nz-form-item *ngIf="rdoMortgageType.value == 0">
             <nz-form-label [nzRequired]="true" [nzSpan]="4">打水方式</nz-form-label>
             <nz-form-control [nzSpan]="14" nzErrorTip="请选择打水方式">
                 <nz-radio-group formControlName="interestCycle" [nzButtonStyle]="'solid'">
@@ -195,7 +198,7 @@
                 <nz-input-number formControlName="goodsPrice" [nzMin]="0" [nzStep]="100"></nz-input-number>
             </nz-form-control>
         </nz-form-item>
-        <nz-form-item *ngIf="pawnGoodsFormGroup.controls['mortgageType'].value == 0">
+        <nz-form-item *ngIf="rdoMortgageType.value == 0">
             <nz-form-label [nzRequired]="true" [nzSpan]="4">利息金额</nz-form-label>
             <nz-form-control [nzSpan]="14" nzErrorTip="利息金额不能为空">
                 <nz-input-group>
@@ -210,7 +213,7 @@
                 <nz-date-picker formControlName="pawnDate"></nz-date-picker>
             </nz-form-control>
         </nz-form-item>
-        <nz-form-item *ngIf="pawnGoodsFormGroup.controls['mortgageType'].value == 1">
+        <nz-form-item *ngIf="rdoMortgageType == 1">
             <nz-form-label [nzSpan]="4">出售价格</nz-form-label>
             <nz-form-control [nzSpan]="14">
                 <nz-input-number formControlName="salePrice" [nzMin]="0" [nzStep]="100">
